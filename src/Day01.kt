@@ -12,7 +12,7 @@ fun main() {
 }
 
 
-fun part1(input: List<String>): Int {
+private fun part1(input: List<String>): Int {
     val groupTotals = getElfTotals(input)
     return groupTotals.max()
 }
@@ -40,7 +40,7 @@ fun <T> List<T>.split(splitOn: T): List<List<T>> {
 }
 
 
-fun part2(input: List<String>): Int {
+private fun part2(input: List<String>): Int {
     val elfTotals = getElfTotals(input)
     val one = elfTotals.max()
     elfTotals.remove(one)

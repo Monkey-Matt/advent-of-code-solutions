@@ -1,13 +1,13 @@
 fun main() {
     // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day04_test")
+    val testInput = readInputLines("Day04_test")
     println(part1(testInput))
     check(part1(testInput) == 24_000)
     println(part2(testInput))
 //    check(part2(testInput) == 45_000)
 
     println("---")
-    val input = readInput("Day04_input")
+    val input = readInputLines("Day04_input")
     println(part1(input))
     println(part2(input))
 }

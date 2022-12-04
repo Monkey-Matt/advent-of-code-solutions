@@ -2,14 +2,14 @@ import kotlin.streams.toList
 
 fun main() {
     // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day03_test")
+    val testInput = readInputLines("Day03_test")
     println(part1(testInput))
     check(part1(testInput) == 157)
     println(part2(testInput))
     check(part2(testInput) == 70)
 
     println("---")
-    val input = readInput("Day03_input")
+    val input = readInputLines("Day03_input")
     println(part1(input))
     println(part2(input))
 }

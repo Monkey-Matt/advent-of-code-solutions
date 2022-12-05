@@ -12,7 +12,7 @@ fun main() {
     println(part2(input))
 }
 
-enum class Move(val moveScore: Int) {
+private enum class Move(val moveScore: Int) {
     ROCK(1), PAPER(2), SCISSORS(3);
 
     fun playAgainst(opponent: Move): Result {
@@ -55,7 +55,7 @@ enum class Move(val moveScore: Int) {
     }
 }
 
-enum class Result(val score: Int) {
+private enum class Result(val score: Int) {
     WIN(6), DRAW(3), LOSE(0);
 
     companion object {

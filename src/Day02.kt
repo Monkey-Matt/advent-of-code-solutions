@@ -10,6 +10,8 @@ fun main() {
     val input = readInputLines("Day02_input")
     println(part1(input))
     println(part2(input))
+
+    testAlternativeSolutions()
 }
 
 private enum class Move(val moveScore: Int) {
@@ -43,12 +45,9 @@ private enum class Move(val moveScore: Int) {
     companion object {
         fun fromInput(char: Char): Move {
             return when (char) {
-                'A' -> ROCK
-                'B' -> PAPER
-                'C' -> SCISSORS
-                'X' -> ROCK
-                'Y' -> PAPER
-                'Z' -> SCISSORS
+                'A', 'X' -> ROCK
+                'B', 'Y' -> PAPER
+                'C', 'Z' -> SCISSORS
                 else -> error("unexpected input")
             }
         }
@@ -101,4 +100,45 @@ private fun part2(input: List<String>): Int {
         gameScore + moveScore
     }
     return scores.sum()
+}
+
+private fun testAlternativeSolutions() {
+    val testInput = readInputLines("Day02_test")
+    check(part1AlternativeSolution(testInput) == 15)
+    check(part2AlternativeSolution(testInput) == 12)
+
+    println("Alternative Solutions:")
+    val input = readInputLines("Day02_input")
+    println(part1(input))
+    println(part2(input))
+}
+
+private fun part1AlternativeSolution(input: List<String>): Int {
+    val scores = mapOf(
+        "A X" to 1 + 3,
+        "A Y" to 2 + 6,
+        "A Z" to 3 + 0,
+        "B X" to 1 + 0,
+        "B Y" to 2 + 3,
+        "B Z" to 3 + 6,
+        "C X" to 1 + 6,
+        "C Y" to 2 + 0,
+        "C Z" to 3 + 3,
+    )
+    return input.sumOf { scores[it] ?: error("failed to find score for $it") }
+}
+
+private fun part2AlternativeSolution(input: List<String>): Int {
+    val scores = mapOf(
+        "A X" to 3 + 0,
+        "A Y" to 1 + 3,
+        "A Z" to 2 + 6,
+        "B X" to 1 + 0,
+        "B Y" to 2 + 3,
+        "B Z" to 3 + 6,
+        "C X" to 2 + 0,
+        "C Y" to 3 + 3,
+        "C Z" to 1 + 6,
+    )
+    return input.sumOf { scores[it] ?: error("failed to find score") }
 }

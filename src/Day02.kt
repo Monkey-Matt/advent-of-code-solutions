@@ -20,7 +20,7 @@ private enum class Move(val moveScore: Int) {
             this == opponent -> Result.DRAW
             this.losesTo() == opponent -> Result.LOSE
             this.winsAgainst() == opponent -> Result.WIN
-            else -> throw Exception("$this + $opponent case not covered")
+            else -> error("$this + $opponent case not covered")
         }
     }
 
@@ -49,7 +49,7 @@ private enum class Move(val moveScore: Int) {
                 'X' -> ROCK
                 'Y' -> PAPER
                 'Z' -> SCISSORS
-                else -> throw IllegalArgumentException()
+                else -> error("unexpected input")
             }
         }
     }
@@ -64,7 +64,7 @@ private enum class Result(val score: Int) {
                 'X' -> LOSE
                 'Y' -> DRAW
                 'Z' -> WIN
-                else -> throw IllegalArgumentException()
+                else -> error("unexpected input")
             }
         }
     }

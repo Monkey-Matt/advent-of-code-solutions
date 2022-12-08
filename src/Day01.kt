@@ -52,6 +52,8 @@ private fun part2(input: List<String>): Int {
     return one + two + three
 }
 
+// ------------------------------------------------------------------------------------------------
+
 private fun testAlternativeSolutions() {
     val testInput = readInput("Day01_test")
     check(part1AlternativeSolution(testInput) == 24_000)

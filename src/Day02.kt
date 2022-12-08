@@ -102,6 +102,8 @@ private fun part2(input: List<String>): Int {
     return scores.sum()
 }
 
+// ------------------------------------------------------------------------------------------------
+
 private fun testAlternativeSolutions() {
     val testInput = readInputLines("Day02_test")
     check(part1AlternativeSolution(testInput) == 15)

@@ -4,6 +4,11 @@ Welcome to the Advent of Code[^aoc] Kotlin project created by [monkey-matt][gith
 
 In this repository, monkey-matt is about to provide solutions for the puzzles using [Kotlin][kotlin] language.
 
+In most cases I've completed the tasks as fast as possible and then tidied up my solutions before committing them.
+On some days I later go back and add an alternative solution that I find interesting after seeing how others have solved the problem. In particular watching [Kotlin by Jetbrains on youtube][kotlin by jetbrains]
+
+---
+
 If you're stuck with Kotlin-specific questions or anything related to this template, check out the following resources:
 
 - [Kotlin docs][docs]
@@ -23,3 +28,4 @@ If you're stuck with Kotlin-specific questions or anything related to this templ
 [kotlin]: https://kotlinlang.org
 [slack]: https://surveys.jetbrains.com/s3/kotlin-slack-sign-up
 [template]: https://github.com/kotlin-hands-on/advent-of-code-kotlin-template
+[kotlin by jetbrains]: https://www.youtube.com/playlist?list=PLlFc5cFwUnmwxQlKf8uWp-la8BVSTH47J

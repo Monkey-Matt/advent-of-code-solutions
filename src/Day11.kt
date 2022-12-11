@@ -1,6 +1,6 @@
 fun main() {
     // test if implementation meets criteria from the description, like:
-    val testInput = readInputLines("Day0X_test")
+    val testInput = readInputLines("Day11_test")
     val part1 = part1(testInput)
     println(part1)
     check(part1 == 24_000)
@@ -9,7 +9,7 @@ fun main() {
 //    check(part2 == 45_000)
 
     println("---")
-    val input = readInputLines("Day0X_input")
+    val input = readInputLines("Day11_input")
     println(part1(input))
     println(part2(input))
 }

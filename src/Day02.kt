@@ -111,8 +111,8 @@ private fun testAlternativeSolutions() {
 
     println("Alternative Solutions:")
     val input = readInputLines("Day02_input")
-    println(part1(input))
-    println(part2(input))
+    println(part1AlternativeSolution(input))
+    println(part2AlternativeSolution(input))
 }
 
 private fun part1AlternativeSolution(input: List<String>): Int {

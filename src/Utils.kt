@@ -8,11 +8,24 @@ import java.security.MessageDigest
 fun readInputLines(name: String) = File("src", "$name.txt")
     .readLines()
 
+/**
+ * Read input as a single string
+ */
 fun readInput(name: String) = File("src", "$name.txt").readText()
 
-/**
- * Converts string to md5 hash.
- */
-fun String.md5() = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteArray()))
-    .toString(16)
-    .padStart(32, '0')
+fun <T> List<T>.split(splitOn: T): List<List<T>> {
+    val groups = mutableListOf<MutableList<T>>()
+    var sublistCount = 0
+    this.forEach { item ->
+        if (item == splitOn) {
+            sublistCount++
+        } else {
+            if (groups.size <= sublistCount) {
+                groups.add(mutableListOf())
+            }
+            val sublist = groups[sublistCount]
+            sublist.add(item)
+        }
+    }
+    return groups
+}

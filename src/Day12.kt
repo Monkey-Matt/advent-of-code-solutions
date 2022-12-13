@@ -1,9 +1,13 @@
+/**
+ * I used brute force (marking the route on the input) to solve this one initially :|
+ * Took just under an hour. I really didn't know how to solve it in code
+ */
 fun main() {
     // test if implementation meets criteria from the description, like:
     val testInput = readInputLines("Day12_test")
     val part1 = part1(testInput)
     println(part1)
-    check(part1 == 24_000)
+    check(part1 == 31)
     val part2 = part2(testInput)
     println(part2)
 //    check(part2 == 45_000)

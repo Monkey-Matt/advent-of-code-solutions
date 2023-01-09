@@ -12,6 +12,8 @@ fun main() {
     val input = readInputLines("Day07_input")
     println(part1(input))
     println(part2(input))
+
+    testAlternativeSolutions()
 }
 
 private interface DirectoryElement {
@@ -58,9 +60,9 @@ private fun part1(input: List<String>): Int {
 }
 private fun part2(input: List<String>): Int {
     val homeDirectory = input.toFileStructure()
-    val requiredExtraSpace = homeDirectory.size - (70000000 - 30000000)
+    val requiredExtraSpace = homeDirectory.size - (70_000_000 - 30_000_000)
     val dirsOverSize = dirsOverSize(homeDirectory, requiredExtraSpace)
-    return dirsOverSize.minByOrNull { it.size }!!.size
+    return dirsOverSize.minBy { it.size }.size
 }
 
 private fun List<String>.toFileStructure(): Directory {
@@ -120,4 +122,65 @@ private fun dirsOverSize(parentDir: Directory, size: Int): List<Directory> {
         answer.addAll(dirsOverSize(it, size))
     }
     return answer
+}
+
+// ------------------------------------------------------------------------------------------------
+
+private fun testAlternativeSolutions() {
+    val testInput = readInputLines("Day07_test")
+    check(part1AlternativeSolution(testInput) == 95_437)
+    check(part2AlternativeSolution(testInput) == 24_933_642)
+
+    println("Alternative Solutions:")
+    val input = readInputLines("Day07_input")
+    println(part1AlternativeSolution(input))
+    println(part2AlternativeSolution(input))
+}
+
+private fun part1AlternativeSolution(input: List<String>): Int {
+    val directories = constructDirMap(input)
+    return directories.values.filter { it <= 100_000 }.sum()
+}
+
+private fun part2AlternativeSolution(input: List<String>): Int {
+    val directories = constructDirMap(input)
+
+    val totalSpace = 70_000_000
+    val requiredForUpdate = 30_000_000
+    val usedSpace: Int = directories["/"]!!
+    val currentFreeSpace = totalSpace - usedSpace
+    val extraFreeSpaceRequired = requiredForUpdate - currentFreeSpace
+
+    return directories.values.filter { it >= extraFreeSpaceRequired }.min()
+}
+
+/**
+ * Return map of directory path to directory size
+ */
+private fun constructDirMap(input: List<String>): Map<String, Int> {
+    var currentPath = "/"
+    val dirMap = mutableMapOf<String, Int>()
+    for (line in input) {
+        when {
+            line.startsWith("$ cd ") -> {
+                currentPath = when (val dirName = line.substringAfter("$ cd ")) {
+                    "/" -> "/"
+                    ".." -> currentPath.substringBeforeLast("/")
+                    else -> if (currentPath == "/") "/$dirName" else "$currentPath/$dirName"
+                }
+            }
+            line[0].isDigit() -> {
+                val (size, _) = line.split(" ")
+                var path = currentPath
+                while (true) {
+                    dirMap[path] = (dirMap[path] ?: 0) + size.toInt()
+                    if (path == "/") break
+                    path = path.substringBeforeLast("/")
+                    if (path == "") path = "/"
+                }
+            }
+            else -> { /* we don't care about this line */ }
+        }
+    }
+    return dirMap
 }

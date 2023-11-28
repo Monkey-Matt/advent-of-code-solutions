@@ -1,19 +1,17 @@
-/**
- * I used brute force (marking the route on the input) to solve this one initially :|
- * Took just under an hour. I really didn't know how to solve it in code
- */
+package twentytwo
+
 fun main() {
     // test if implementation meets criteria from the description, like:
-    val testInput = readInputLines("Day12_test")
+    val testInput = readInputLines("Day0X_test")
     val part1 = part1(testInput)
     println(part1)
-    check(part1 == 31)
+    check(part1 == 24_000)
     val part2 = part2(testInput)
     println(part2)
 //    check(part2 == 45_000)
 
     println("---")
-    val input = readInputLines("Day12_input")
+    val input = readInputLines("Day0X_input")
     println(part1(input))
     println(part2(input))
 }

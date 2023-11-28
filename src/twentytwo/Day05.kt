@@ -1,3 +1,5 @@
+package twentytwo
+
 import java.util.*
 
 fun main() {

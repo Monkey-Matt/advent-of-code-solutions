@@ -1,17 +1,22 @@
+package twentythree
+
 import java.io.File
-import java.math.BigInteger
-import java.security.MessageDigest
 
 /**
  * Reads lines from the given input txt file.
  */
-fun readInputLines(name: String) = File("src", "$name.txt")
+fun readInputLines(name: String) = File("src/twentythree", "$name.txt")
     .readLines()
 
 /**
  * Read input as a single string
  */
 fun readInput(name: String) = File("src", "$name.txt").readText()
+
+/**
+ * Cleaner println for answers
+ */
+fun Any?.println() = println(this)
 
 fun <T> List<T>.split(splitOn: T): List<List<T>> {
     val groups = mutableListOf<MutableList<T>>()

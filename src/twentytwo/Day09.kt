@@ -1,3 +1,5 @@
+package twentytwo
+
 fun main() {
     // test if implementation meets criteria from the description, like:
     val testInput = readInputLines("Day09_test")
